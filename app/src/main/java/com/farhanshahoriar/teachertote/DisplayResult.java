@@ -75,5 +75,10 @@ public class DisplayResult extends AppCompatActivity {
             resultViewAdapter.setData(null);
         }
     }
-
+    void onAddStudent(View view){
+        Intent intent = new Intent(this,EditMarks.class);
+        intent.putExtra("Class",cls);
+        startActivity(intent);
+        //Next part is not working.
+    }
 }
