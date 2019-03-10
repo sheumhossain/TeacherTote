@@ -40,16 +40,40 @@ public class DisplayResult extends AppCompatActivity {
         fRecyclerView = (RecyclerView) findViewById(R.id.rv_food_menu);
 
         Intent searchIntent = getIntent();
-        key = "";
+        key="";
 
-        if (searchIntent.hasExtra("Class")) {
+        if(searchIntent.hasExtra("Class")){
             cls = searchIntent.getStringExtra("Class");
-            if (cls.equals("1")) {
+            if(cls.equals("1")){
                 fileName = "resultdata.csv";
                 keyText.setText("Class One Result:\n");
             }
             //Toast.makeText(this,key, Toast.LENGTH_LONG).show();
 
         }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+
+        fRecyclerView.setLayoutManager(layoutManager);
+        fRecyclerView.setHasFixedSize(true);
+        resultViewAdapter = new ResultViewAdapter();
+        fRecyclerView.setAdapter(resultViewAdapter);
+
+
+
+        String fileName = "resultdata"+cls+".csv";
+        file1 = new File(getApplicationContext().getFilesDir(),"data.csv");
+        if(file1.exists()) {
+            resultList = ResultUtilites.loadDataFile(file1);
+            IndividualResult[] resultArray = null;
+            resultArray = resultList.toArray(new IndividualResult[resultList.size()]);
+
+            Arrays.sort(resultArray);
+            resultViewAdapter.setData(resultArray);
+        }
+        else {
+            resultViewAdapter.setData(null);
+        }
     }
+
 }
