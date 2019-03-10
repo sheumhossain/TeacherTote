@@ -1,4 +1,4 @@
-git apackage com.farhanshahoriar.teachertote;
+package com.farhanshahoriar.teachertote;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
