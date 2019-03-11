@@ -1,4 +1,4 @@
-package com.farhanshahoriar.teachertote;
+ package com.farhanshahoriar.teachertote;
 
 public class IndividualResult implements Comparable{
     public String nickName,fullName;
